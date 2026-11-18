@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Basic page setup, character encoding, and responsive viewport settings -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Schedule Optimizer & Analytics</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Ambient background glow orbs for the glassmorphism theme -->
+<div class="aurora-orb orb-1"></div>
+<div class="aurora-orb orb-2"></div>
+<div class="aurora-orb orb-3"></div>
+
+<div class="app-wrapper">
+  <!-- Header Section -->
+  <header class="app-header">
+    <div class="pill-badge">
+      <span class="pulse-dot"></span>
+      <span>STUDY INTEL HUB</span>
+    </div>
+    <h1>Study Time & Schedule Analyzer</h1>
+    <p>Track your academic focus hours and generate intelligent schedule recommendations.</p>
+  </header>
+
+  <!-- Main Card Container -->
+  <main class="glass-card">
+    
+    <!-- Input Form Section for adding subjects and hours -->
+    <section class="form-section">
+      <div class="input-grid">
+        <div class="input-field-group">
+          <label for="subjectInput">Subject Name</label>
+          <input type="text" id="subjectInput" placeholder="e.g., Computer Architecture" autocomplete="off">
+        </div>
+        <div class="input-field-group">
+          <label for="hoursInput">Study Hours</label>
+          <input type="number" id="hoursInput" placeholder="e.g., 3.5" min="0" step="0.5">
+        </div>
+        <button type="button" id="addBtn" onclick="addSubject()">
+          <span>+ Add Subject</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Display Section for Logged Subjects -->
+    <section class="subjects-section">
+      <div class="subjects-header">
+        <h2>LOGGED SUBJECTS</h2>
+        <span id="subjectCount" class="counter-badge">0 Active</span>
+      </div>
+      <div id="subjectChips" class="chips-box">
+        <p class="placeholder-text">No subjects added yet. Enter a subject above to get started!</p>
+      </div>
+    </section>
+
+    <!-- Action Buttons for Running Analysis or Resetting -->
+    <section class="actions-section">
+      <button type="button" id="analyzeBtn" onclick="runAnalysis()" disabled>
+        Generate Schedule Analysis
+      </button>
+      <button type="button" id="resetBtn" onclick="resetData()">
+        Clear All
+      </button>
+    </section>
+
+    <!-- Analysis Results Section (Hidden until analysis runs) -->
+    <section id="resultsSection" class="results-container hidden">
+      <div class="section-divider"></div>
+
+      <!-- Metric Cards showing totals, averages, and focus needs -->
+      <div class="metrics-row">
+        <div class="stat-card">
+          <span class="stat-label">Total Study Time</span>
+          <span id="totalHoursText" class="stat-number">0.0 hrs</span>
+        </div>
+        <div class="stat-card accent">
+          <span class="stat-label">Subject Average</span>
+          <span id="avgHoursText" class="stat-number emerald">0.0 hrs</span>
+        </div>
+        <div class="stat-card warning">
+          <span class="stat-label">Needs Most Focus</span>
+          <span id="leastStudiedText" class="stat-number warning-text">None</span>
+        </div>
+      </div>
+
+      <!-- Priority Records Table -->
+      <div class="table-wrapper">
+        <div class="table-title">STUDY TIME RECORDS</div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Hours</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Rows populated dynamically via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Actionable Recommendations Box -->
+      <div class="recommendations-card">
+        <div class="rec-title">ACTIONABLE RECOMMENDATIONS</div>
+        <ul id="recommendationsList" class="rec-bullets">
+          <!-- List items populated dynamically via JavaScript -->
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
